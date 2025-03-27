@@ -1,16 +1,18 @@
-/*
-    Autor: arthur pereira
-    Data: 25/03/2025
- */
-package desafiosigno;
+package javaapplication63;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class DesafioSigno {
+
+public class JavaApplication63 {
 
     public static void main(String[] args) {
+       /*
+    Autor: arthur pereira
+    Data: 25/03/2025
+ */
+
         Scanner ler = new Scanner(System.in);
         DecimalFormat decimal = new DecimalFormat("0.00");
         Calendar hoje = Calendar.getInstance();
@@ -20,7 +22,7 @@ public class DesafioSigno {
         int sexo, diaNasc, mesNasc, anoNasc, diaAtual, mesAtual, anoAtual, idade, numeroSorte, numCor;
 
         //sistema do nome//
-        System.out.println("Insira seu nome:");
+        System.out.println("Insira seu nome: ");
         nome = ler.nextLine();
         if (nome.length() < 8) {
             System.out.println("Seu nome não foi informado corretamente");
@@ -49,6 +51,11 @@ public class DesafioSigno {
         idade = (anoAtual - anoNasc);
 
         //Valiação de datas//
+        if (diaNasc >31 || mesNasc < 1 || mesNasc > 12){
+            System.out.println("mês invalido");
+            return;
+        }
+        
         if (diaNasc < 1 || diaNasc > 31) {
             System.out.println("dia invalido");
             return;
@@ -130,8 +137,7 @@ public class DesafioSigno {
               System.out.println("Sra " + nome + " Nascida em: " + "["+ diaNasc+"/"+mesNasc+"/"+anoNasc+"], é do signo de " + signo + ". Você tem "+ idade+" anos" +". Seu número da sorte é "+ numeroSorte + " e sua cor da sorte é "+ corSorte );
           }else{
               System.out.println("Sr " + nome + " Nascido em: " + "["+ diaNasc+"/"+mesNasc+"/"+anoNasc+"], é do signo de " + signo + ". Você tem "+ idade+" anos" +". Seu número da sorte é "+ numeroSorte + " e sua cor da sorte é "+ corSorte );
-        
-          }     
     }
-
+    
+}
 }

@@ -1,0 +1,143 @@
+/*
+    Autor: arthur pereira
+    Data: 25/03/2025
+ */
+package desafiosigno;
+
+import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Scanner;
+
+public class DesafioSigno {
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        DecimalFormat decimal = new DecimalFormat("0.00");
+        Calendar hoje = Calendar.getInstance();
+        //variáveis//
+
+        String nome,corSorte = null, signo = null;
+        int sexo, diaNasc, mesNasc, anoNasc, diaAtual, mesAtual, anoAtual, idade, numeroSorte, numCor;
+
+        //sistema do nome//
+        System.out.println("Insira seu nome:");
+        nome = ler.nextLine();
+        if (nome.length() < 8) {
+            System.out.println("Seu nome não foi informado corretamente");
+            return;
+        }
+        //sistema do sexo//   
+        System.out.println("Insira seu sexo (1 para Feminino e 2 para Masculino):");
+        sexo = ler.nextInt();
+        if (sexo < 1) {
+            System.out.println("Invalído");
+        } else if (sexo == 1) {
+            System.out.println("Feminino");
+        } else {
+            System.out.println("Masculino");
+        }
+        //sistema da data de nascimneto//   
+        System.out.println("Insira o dia que nasceu:");
+        diaNasc = ler.nextInt();
+        System.out.println("Insira o mês que nasceu:");
+        mesNasc = ler.nextInt();
+        System.out.println("Insira o ano que nasceu:");
+        anoNasc = ler.nextInt();
+        diaAtual = hoje.get(Calendar.DATE);
+        mesAtual = hoje.get(Calendar.MONTH);
+        anoAtual = hoje.get(Calendar.YEAR);
+        idade = (anoAtual - anoNasc);
+
+        //Valiação de datas//
+        if (diaNasc < 1 || diaNasc > 31) {
+            System.out.println("dia invalido");
+            return;
+        }
+        //Processamento da data de nascimento//
+        if (anoNasc >= anoAtual || (anoNasc == anoAtual && mesNasc > mesAtual) || anoNasc < 1900) {
+            System.out.println("Data invlída");
+            return;
+        } else if (mesNasc > mesAtual || (mesNasc == mesAtual && diaNasc > diaAtual)) {
+            idade--;
+        }
+
+        // sistema do número da sorte//
+        numeroSorte = 1 + (int) (Math.random() * 99);
+        //Cor sorte
+        numCor = 1 + (int) (Math.random() * 10);
+        switch (numCor) {
+            case 1:
+                 corSorte = "Azul";
+                break;
+            case 2:
+                corSorte = "Vermelho";
+                break;
+            case 3:
+                corSorte = "Amarelo";
+                break;
+            case 4:
+                corSorte = "Verde";
+                break;
+            case 5:
+               corSorte = "Laranja";
+                break;
+            case 6:
+                corSorte = "Roxo";
+                break;
+            case 7:
+               corSorte = "Preto";
+                break;
+            case 8:
+               corSorte = "Branco";
+                break;
+            case 9:
+                corSorte = "Rosa";
+                break;
+            case 10:
+                corSorte = "Marrom";
+                break;
+
+        }
+        //sistema do signo//
+        if ((mesNasc == 12 && diaNasc >= 22) || (mesNasc == 1 && diaNasc <= 19)) {
+            signo = "Capricórnio";
+        } else if ((mesNasc == 1 && diaNasc >= 20) || (mesNasc == 2 && diaNasc <= 18)) {
+            signo = "Aquário";
+        } else if ((mesNasc == 2 && diaNasc >= 19) || (mesNasc == 3 && diaNasc <= 20)) {
+           signo = "Peixes";
+        } else if ((mesNasc == 3 && diaNasc >= 21) || (mesNasc == 4 && diaNasc <= 19)) {
+            signo = "Áries";
+        } else if ((mesNasc == 4 && diaNasc >= 20) || (mesNasc == 5 && diaNasc <= 20)) {
+           signo = "Touro";
+        } else if ((mesNasc == 5 && diaNasc >= 21) || (mesNasc == 6 && diaNasc <= 20)) {
+           signo = "Gêmeos";
+        } else if ((mesNasc == 6 && diaNasc >= 21) || (mesNasc == 7 && diaNasc <= 22)) {
+             signo = "Câncer";
+        } else if ((mesNasc == 7 && diaNasc >= 23) || (mesNasc == 8 && diaNasc <= 22)) {
+            signo = "Leão";
+        } else if ((mesNasc == 8 && diaNasc >= 23) || (mesNasc == 9 && diaNasc <= 22)) {
+            signo = "Virgem";
+        } else if ((mesNasc == 9 && diaNasc >= 23) || (mesNasc == 10 && diaNasc <= 22)) {
+            signo = "Libra";
+        } else if ((mesNasc == 10 && diaNasc >= 23) || (mesNasc == 11 && diaNasc <= 21)) {
+            signo = "Escorpião";
+        } else if ((mesNasc == 11 && diaNasc >= 22) || (mesNasc == 12 && diaNasc <= 21)) {
+            signo = "Sagitário";
+        } else {
+            System.out.println("Data invalída");
+        }
+        //Mensagem extra//
+       /*
+        Exemplo para feminino: “usuario [Nome], nascido em [dia/mês/ano], é do signo de [signo]. Você tem [idade] anos. Seu número da sorte é [número] 
+        e sua cor é [cor].” – use a mesma regra para mostrar para as pessoas do sexo masculino.
+
+        */
+          if(sexo ==1){
+              System.out.println("Sra " + nome + " Nascida em: " + "["+ diaNasc+"/"+mesNasc+"/"+anoNasc+"], é do signo de " + signo + ". Você tem "+ idade+" anos" +". Seu número da sorte é "+ numeroSorte + " e sua cor da sorte é "+ corSorte );
+          }else{
+              System.out.println("Sr " + nome + " Nascido em: " + "["+ diaNasc+"/"+mesNasc+"/"+anoNasc+"], é do signo de " + signo + ". Você tem "+ idade+" anos" +". Seu número da sorte é "+ numeroSorte + " e sua cor da sorte é "+ corSorte );
+        
+          }     
+    }
+
+}

@@ -126,12 +126,6 @@ public class DesafioSigno {
         } else {
             System.out.println("Data invalída");
         }
-        //Mensagem extra//
-       /*
-        Exemplo para feminino: “usuario [Nome], nascido em [dia/mês/ano], é do signo de [signo]. Você tem [idade] anos. Seu número da sorte é [número] 
-        e sua cor é [cor].” – use a mesma regra para mostrar para as pessoas do sexo masculino.
-
-        */
           if(sexo ==1){
               System.out.println("Sra " + nome + " Nascida em: " + "["+ diaNasc+"/"+mesNasc+"/"+anoNasc+"], é do signo de " + signo + ". Você tem "+ idade+" anos" +". Seu número da sorte é "+ numeroSorte + " e sua cor da sorte é "+ corSorte );
           }else{
